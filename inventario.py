@@ -1,0 +1,2 @@
+# Inventario del jugador
+
