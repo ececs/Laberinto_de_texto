@@ -66,7 +66,7 @@ Responsabilidad:
 - NO contiene lógica de juego.
 
 Ejecución recomendada (desde la raíz del proyecto):
-    python -m src.main
+    python3 -m src.main
 """
 
 import sys
