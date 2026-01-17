@@ -36,3 +36,4 @@ Sistema de inventario: Permite recoger y usar objetos5.
 Eventos y puzzles: Implementa interacciones especiales por
 habitación
 Condiciones de salida: Define cómo se completa el laberinto7.
+prueba
