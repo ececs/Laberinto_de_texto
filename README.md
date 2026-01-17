@@ -18,7 +18,7 @@ Añade elementos interactivos básicos en cada habitación (puertas con llave, c
 simple (3-5 puntos de vida) y descripciones de habitaciones con pistas. Se elimina la funcionalidad de guardar/cargar.
 Reto 3: Sistema de Encuentros Básico
 Desarrolla un sistema para encuentros simples con enemigos (sin sistema de combate complejo) y un inventario de objetos
-básicos (sin estadísticas de personaje). Añade eventos aleatorios simples y una habitación final con un desafío.
+básicos (sin estadísticas de personaje). Añade eventos aleatorihos simples y una habitación final con un desafío.
 Guía de Desarrollo
 Pasos para Resolver el Proyecto
 1.
