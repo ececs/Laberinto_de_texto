@@ -36,4 +36,53 @@ Sistema de inventario: Permite recoger y usar objetos5.
 Eventos y puzzles: Implementa interacciones especiales por
 habitación
 Condiciones de salida: Define cómo se completa el laberinto7.
-Probando cambios, Pablo.
+
+¿QUE ARCHIVOS USA EL JUEGO Y PARA QUÉ SIRVE CADA UNO?
+
+juego.py = el “cerebro” que habla con el jugador
+Pide texto por consola (input)
+Decide qué comando has escrito
+Llama a otras funciones (mover, coger, etc.)
+Imprime respuestas y controla cuándo termina el juego 
+Funciones clave:
+interpretar(linea): convierte lo que escribes en acciones (parser).
+iniciar(): el bucle principal del juego.
+
+estado.py = la “memoria” del juego
+Aquí se guardan variables que cambian durante la partida: 
+ubicacion: en qué sala estás (empieza en "entrada")
+inventario: lista de objetos que llevas
+visitadas: set (conjunto) de salas por las que ya pasaste
+victoria: si has ganado o no
+(preparado para futuro) salud y flags
+Funciones:
+resetear(): reinicia todo como al empezar.
+vivo(): devuelve True si salud > 0 (Reto 2+).
+estado_resumen(): texto para ver el estado.
+
+mundo.py = el mapa y los datos del laberinto
+Aquí NO hay “reglas”, solo datos: habitaciones, salidas, objetos. 
+Usa diccionarios como:
+HABITACIONES: id -> {nombre, descripcion}
+SALIDAS: id -> { "n": "otraSala", ... }
+OBJETOS_EN_SALA: id -> ["llave", "antorcha", ...]
+COORDS: id -> (x,y) para el mapa ASCII
+Y funciones “de consulta”:
+descripcion_sala(sala_id)
+objetos_visibles(sala_id)
+salidas_disponibles(sala_id)
+coord_sala(sala_id)
+
+movimiento.py = moverse y mirar
+Tu archivo movimiento.py (ojo: en lo que me aparece cargado hay código mezclado, parece que pegaste funciones de movimiento dentro de ese archivo) tiene estas funciones usadas por juego.py: 
+mover(dir_): cambia estado.ubicacion si existe salida
+mirar(): describe sala + objetos visibles + salidas
+mapa_ascii(): muestra un listado tipo mapa con P/V/ . (Jugador/Visitada/No visitada)
+
+acciones.py = inventario y acciones sobre objetos
+Funciones usadas por juego.py: 
+coger(obj)
+soltar(obj)
+inventario_str()
+inspeccionar(obj)
+usar(obj, destino) (en Reto 1 lanza NotImplementedError si lo tienes)
