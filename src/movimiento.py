@@ -38,7 +38,8 @@ mundo.py — Datos del laberinto
 
 from typing import Dict, List, Tuple
 
-from src import estado, mundo
+import estado
+import mundo
 
 # Coordenadas (x, y) para mapa ASCII
 COORDS: Dict[str, Tuple[int, int]] = {

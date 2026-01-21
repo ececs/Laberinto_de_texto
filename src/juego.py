@@ -124,3 +124,6 @@ def iniciar() -> None:
             if estado.victoria:
                 print("\n🏆 ¡Has escapado del laberinto!")
                 break
+if __name__ == "__main__":
+    iniciar()
+

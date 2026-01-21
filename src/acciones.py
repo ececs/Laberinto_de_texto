@@ -40,8 +40,8 @@ acciones.py — Lógica de acciones del jugador
 - En Reto 1, `usar` lanza NotImplementedError (UT05) si el objeto está en inventario.
 """
 
-from src import estado
-from src import mundo
+import estado
+import mundo
 
 OBJ_DESCS = {
     "llave": "Una llave pequeña, oxidada.",
