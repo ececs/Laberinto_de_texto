@@ -67,6 +67,8 @@ def interpretar(linea: str) -> str | None:
         return movimiento.mover(cmd)
     if cmd == "ir" and args:
         return movimiento.mover(args[0])
+    if cmd == "ir":
+        return "Te falta la dirección. Ejemplo: ir n"
     if cmd == "mirar":
         return movimiento.mirar()
     if cmd == "inventario":
