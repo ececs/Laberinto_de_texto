@@ -5,28 +5,28 @@ Este archivo guarda los datos del laberinto.
 
 Contiene diccionarios con:
 - Habitaciones (nombre y descripción)
-- Salidas (n/s/e/o es decir a que sala vas)
+- Salidas (n/s/e/o, es decir, a qué sala vas)
 - Objetos que hay en cada sala.
 
-Aquí solo devolvemos la información para que otros archivos los usen.
+Aquí solo devolvemos la información para que otros archivos la usen.
 """
 
 # -----------------------------
 # 2) Habitaciones (texto)
 # -----------------------------
 # Guardamos nombre y descripción de cada sala.
-HABITACIONES = { # Diccionario con todas las salas: clave = id de la sala, valor = nombre y descripción.
+HABITACIONES = {  # Diccionario con todas las salas: clave = id de la sala, valor = nombre y descripción.
     "entrada": {
         "nombre": "Entrada al Laberinto",
         "descripcion": "Una antorcha parpadea. Al norte, un pasillo largo y oscuro."
     },
     "pasillo": {
         "nombre": "Pasillo",
-        "descripcion": "Las paredes son antiguas de piedra desgastada, no puedes ver mucho, pero este y oeste parecen transitables."
+        "descripcion": "Las paredes son antiguas de piedra desgastada, no puedes ver mucho, pero este (e) y oeste (o) parecen transitables."
     },
     "armas": {
         "nombre": "Sala de Guardia",
-        "descripcion": "Restos de armaduras y escudos oxidados, si alguien salió de aquí, fue hace mucho. Puedes volver al oeste o continuar por el norte."
+        "descripcion": "Restos de armaduras y escudos oxidados, si alguien salió de aquí, fue hace mucho. Puedes volver al oeste (o) o continuar por el norte (n)."
     },
     "biblioteca": {
         "nombre": "Biblioteca",
@@ -38,7 +38,7 @@ HABITACIONES = { # Diccionario con todas las salas: clave = id de la sala, valor
     },
     "pozo": {
         "nombre": "Pozo",
-        "descripcion": "Se oye agua. Hacia el norte parece haber claridad."
+        "descripcion": "Se oye agua. Hacia el norte (n) parece haber claridad."
     },
     "puente": {
         "nombre": "Puente",
@@ -50,7 +50,7 @@ HABITACIONES = { # Diccionario con todas las salas: clave = id de la sala, valor
     },
     "salida": {
         "nombre": "Puerta de Salida",
-        "descripcion": "Una gran puerta se alza frente a ti. El aire es más fresco aquí, pero algo te dice que aún no eres libre." 
+        "descripcion": "Una gran puerta se alza frente a ti. El aire es más fresco aquí, pero algo te dice que aún no eres libre."
     },
 }
 
@@ -97,23 +97,21 @@ def descripcion_sala(sala_id):
     Devuelve un texto con el nombre y la descripción de una sala.
     Si la sala no existe, devuelve algo básico para no romper el juego.
     """
-    datos = HABITACIONES.get(sala_id, {}) # Buscamos la sala en el diccionario HABITACIONES. Si no existe , usamos {} para no dar error.
-    nombre = datos.get("nombre", sala_id) # Sacamos el nombre bonito de la sala. Usamos sala_id por si falta nombre, así tiene mas robustez.
-    descripcion = datos.get("descripcion", "") # Sacamos la descripción, si falta cadena vacía, mas robusto.
-    return "== " + nombre + " ==\n" + descripcion # Devolvemos texto final con formato y salto de linea.
+    datos = HABITACIONES.get(sala_id, {})  # Buscamos la sala. Si no existe, usamos {} para no dar error.
+    nombre = datos.get("nombre", sala_id)  # Usamos sala_id por si falta "nombre", así tiene más robustez.
+    descripcion = datos.get("descripcion", "")  # Si falta "descripcion", ponemos cadena vacía (más robusto).
+    return "== " + nombre + " ==\n" + descripcion  # Devolvemos texto final con formato y salto de línea.
 
 
 def objetos_visibles(sala_id):
     """
     Devuelve una lista con los objetos que hay en una sala.
     """
-    return list(OBJETOS_EN_SALA.get(sala_id, [])) # Buscamos objetos en la sala, si no hay, devuelve lista vacia []. Usamos list, hacemos una copia para que la función sea solo de consulta.
+    return list(OBJETOS_EN_SALA.get(sala_id, []))  # Devuelve objetos de la sala. list() hace copia para consultar sin tocar el original.
 
 
 def salidas_disponibles(sala_id):
     """
     Devuelve un diccionario con las salidas de la sala.
-    Devolvemos una COPIA para evitar modificaciones accidentales.
     """
-    return dict(SALIDAS.get(sala_id, {})) # Utilizamos dict para hacer copia y no utilizar el original
-
+    return dict(SALIDAS.get(sala_id, {}))  # Devuelve las salidas. dict() hace copia para no modificar el original.
