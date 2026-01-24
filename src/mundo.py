@@ -1,48 +1,23 @@
-
 """
-mundo.py — Definición del mundo (habitaciones, salidas, objetos)
-================================================================
+mundo.py
+========
+Este archivo guarda LOS DATOS del laberinto.
 
-Responsabilidad:
-- Declarar la estructura del laberinto:
-    * HABITACIONES: dict id -> {nombre, descripcion}
-    * SALIDAS: dict id -> dict(dir -> id)
-    * OBJETOS_EN_SALA: dict id -> [objetos]
-    * COORDS: dict id -> (x, y) para dibujar mapa ASCII
-- Proveer funciones utilitarias de consulta de datos (no de lógica).
+Aquí NO hay lógica de juego (no movemos al jugador, no cambiamos estado).
+Solo definimos:
+- salas (habitaciones)
+- salidas entre salas
+- objetos que hay en cada sala
+- coordenadas para el mapa (si queremos dibujarlo)
 
-Relaciones:
-- No importa `estado` ni `acciones`. Debe ser un módulo "de datos".
-- `juego` y `acciones` leen de aquí para describir y verificar.
-
-Funciones sugeridas:
-- `descripcion_sala(sala_id: str) -> str`
-- `objetos_visibles(sala_id: str) -> list[str]`
-- `salidas_disponibles(sala_id: str) -> dict[str, str]`
-- `coord_sala(sala_id: str) -> tuple[int, int]`
-
-Reto 1:
-- Debe contener 8–10 habitaciones, 3–5 objetos, y coords razonables para el mapa.
-- Descripciones con pistas suaves (sin lógica de puzle aún).
-
-Reto 2:
-- Añadir textos con pistas contextuales (p. ej., mención de puerta, cofre, olor a gas, etc.).
-
-Reto 3:
-- Anotar qué salas pueden tener encuentros aleatorios (p. ej., metadatos como `encuentros_prob: 0.2` si queréis).
+Otros módulos (movimiento.py y acciones.py) consultan estos datos.
 """
 
-
-"""
-mundo.py — Datos del laberinto
-- Sin lógica de juego; solo estructuras y funciones de consulta.
-- Debe cubrir Reto 1: 8–10 habitaciones, 3–5 objetos, coords para mapa.
-"""
-
-from typing import Dict, List, Tuple
-
-# Coordenadas (x, y) para mapa ASCII
-COORDS: Dict[str, Tuple[int, int]] = {
+# -----------------------------
+# 1) Coordenadas para el mapa
+# -----------------------------
+# Cada sala tiene una coordenada (x, y) para poder dibujar un mapa sencillo.
+COORDS = {
     "entrada":     (0, 0),
     "pasillo":     (0, 1),
     "armas":       (1, 1),
@@ -54,23 +29,57 @@ COORDS: Dict[str, Tuple[int, int]] = {
     "salida":      (0, 3),
 }
 
-HABITACIONES: Dict[str, Dict[str, str]] = {
-    "entrada":    {"nombre": "Entrada del Laberinto", "descripcion": "Una antorcha parpadea. Al norte, un pasillo angosto."},
-    "pasillo":    {"nombre": "Pasillo", "descripcion": "Paredes con marcas antiguas. Este y oeste parecen transitables."},
-    "armas":      {"nombre": "Sala de Armas", "descripcion": "Estantes corroídos; algo brilla bajo una mesa."},
-    "biblioteca": {"nombre": "Biblioteca", "descripcion": "Estantes polvorientos y olor a pergamino húmedo."},
-    "cripta":     {"nombre": "Cripta", "descripcion": "Frío intenso. Susurros que no sabes si imaginarios."},
-    "pozo":       {"nombre": "Pozo", "descripcion": "Se oye agua. Hacia el norte parece haber claridad."},
-    "puente":     {"nombre": "Puente", "descripcion": "Puente de piedra sobre un abismo."},
-    "tesoreria":  {"nombre": "Tesorería", "descripcion": "Cofres y tapices. (Interacciones en Reto 2)"},
-    "salida":     {"nombre": "Puerta de Salida", "descripcion": "Una gran puerta. (Mecánica de salida en Reto 2/3)"},
+# -----------------------------
+# 2) Habitaciones (texto)
+# -----------------------------
+# Guardamos nombre y descripción de cada sala.
+HABITACIONES = {
+    "entrada": {
+        "nombre": "Entrada del Laberinto",
+        "descripcion": "Una antorcha parpadea. Al norte, un pasillo angosto."
+    },
+    "pasillo": {
+        "nombre": "Pasillo",
+        "descripcion": "Paredes con marcas antiguas. Este y oeste parecen transitables."
+    },
+    "armas": {
+        "nombre": "Sala de Armas",
+        "descripcion": "Estantes corroídos; algo brilla bajo una mesa."
+    },
+    "biblioteca": {
+        "nombre": "Biblioteca",
+        "descripcion": "Estantes polvorientos y olor a pergamino húmedo."
+    },
+    "cripta": {
+        "nombre": "Cripta",
+        "descripcion": "Frío intenso. Susurros que no sabes si imaginarios."
+    },
+    "pozo": {
+        "nombre": "Pozo",
+        "descripcion": "Se oye agua. Hacia el norte parece haber claridad."
+    },
+    "puente": {
+        "nombre": "Puente",
+        "descripcion": "Puente de piedra sobre un abismo."
+    },
+    "tesoreria": {
+        "nombre": "Tesorería",
+        "descripcion": "Cofres y tapices. (Interacciones en Reto 2)"
+    },
+    "salida": {
+        "nombre": "Puerta de Salida",
+        "descripcion": "Una gran puerta. (Mecánica de salida en Reto 2/3)"
+    },
 }
 
-# Conexiones N/S/E/O
-SALIDAS: Dict[str, Dict[str, str]] = {
+# -----------------------------
+# 3) Salidas entre salas
+# -----------------------------
+# Para cada sala, indicamos a qué sala se llega con n/s/e/o.
+SALIDAS = {
     "entrada":    {"n": "pasillo"},
-    "pasillo":    {"s": "entrada", "e": "armas", "w": "biblioteca", "n": "pozo"},
-    "armas":      {"w": "pasillo", "n": "puente"},
+    "pasillo":    {"s": "entrada", "e": "armas", "o": "biblioteca", "n": "pozo"},
+    "armas":      {"o": "pasillo", "n": "puente"},
     "biblioteca": {"e": "pasillo", "n": "cripta"},
     "cripta":     {"s": "biblioteca"},
     "pozo":       {"s": "pasillo", "n": "salida"},
@@ -79,29 +88,58 @@ SALIDAS: Dict[str, Dict[str, str]] = {
     "salida":     {"s": "pozo"},
 }
 
-# Objetos por sala (3–5 total para Reto 1)
-OBJETOS_EN_SALA: Dict[str, List[str]] = {
+# -----------------------------
+# 4) Objetos por sala
+# -----------------------------
+# Lista de objetos que hay en cada sala al inicio.
+OBJETOS_EN_SALA = {
     "armas": ["llave"],
     "biblioteca": ["pergamino"],
     "cripta": ["medallon"],
     "pozo": ["antorcha"],
-    # otras salas sin objetos
-    "entrada": [], "pasillo": [], "puente": [], "tesoreria": [], "salida": [],
+
+    # Salas sin objetos
+    "entrada": [],
+    "pasillo": [],
+    "puente": [],
+    "tesoreria": [],
+    "salida": [],
 }
 
-# ---- Funciones utilitarias (sin lógica) ----
+# ------------------------------------------------
+# 5) Funciones de consulta (NO cambian el mundo)
+# ------------------------------------------------
 
-def descripcion_sala(sala_id: str) -> str:
-    meta = HABITACIONES.get(sala_id, {})
-    nombre = meta.get("nombre", sala_id)
-    desc = meta.get("descripcion", "")
-    return f"== {nombre} ==\n{desc}"
+def descripcion_sala(sala_id):
+    """
+    Devuelve un texto con el nombre y la descripción de una sala.
+    Si la sala no existe, devuelve algo básico para no romper el juego.
+    """
+    datos = HABITACIONES.get(sala_id, {})
+    nombre = datos.get("nombre", sala_id)
+    descripcion = datos.get("descripcion", "")
+    return "== " + nombre + " ==\n" + descripcion
 
-def objetos_visibles(sala_id: str) -> list[str]:
+
+def objetos_visibles(sala_id):
+    """
+    Devuelve una lista con los objetos que hay en una sala.
+    Devolvemos una COPIA de la lista para no modificarla sin querer.
+    """
     return list(OBJETOS_EN_SALA.get(sala_id, []))
 
-def salidas_disponibles(sala_id: str) -> dict[str, str]:
+
+def salidas_disponibles(sala_id):
+    """
+    Devuelve un diccionario con las salidas de la sala.
+    Devolvemos una COPIA para evitar modificaciones accidentales.
+    """
     return dict(SALIDAS.get(sala_id, {}))
 
-def coord_sala(sala_id: str) -> tuple[int, int]:
+
+def coord_sala(sala_id):
+    """
+    Devuelve la coordenada (x, y) de una sala.
+    Si no existe, devuelve (0, 0).
+    """
     return COORDS.get(sala_id, (0, 0))
