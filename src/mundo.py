@@ -1,33 +1,15 @@
 """
 mundo.py
 ========
-Este archivo guarda LOS DATOS del laberinto.
+Este archivo guarda los datos del laberinto.
 
-Aquí NO hay lógica de juego (no movemos al jugador, no cambiamos estado).
-Solo definimos:
-- salas (habitaciones)
-- salidas entre salas
-- objetos que hay en cada sala
-- coordenadas para el mapa (si queremos dibujarlo)
+Contiene diccionarios con:
+- Habitaciones (nombre y descripción)
+- Salidas (n/s/e/o es decir a que sala vas)
+- Objetos que hay en cada sala.
 
-Otros módulos (movimiento.py y acciones.py) consultan estos datos.
+Aquí solo devolvemos la información para que otros archivos los usen.
 """
-
-# -----------------------------
-# 1) Coordenadas para el mapa
-# -----------------------------
-# Cada sala tiene una coordenada (x, y) para poder dibujar un mapa sencillo.
-COORDS = {
-    "entrada":     (0, 0),
-    "pasillo":     (0, 1),
-    "armas":       (1, 1),
-    "biblioteca":  (-1, 1),
-    "cripta":      (-1, 2),
-    "pozo":        (0, 2),
-    "puente":      (1, 2),
-    "tesoreria":   (1, 3),
-    "salida":      (0, 3),
-}
 
 # -----------------------------
 # 2) Habitaciones (texto)
@@ -136,10 +118,3 @@ def salidas_disponibles(sala_id):
     """
     return dict(SALIDAS.get(sala_id, {}))
 
-
-def coord_sala(sala_id):
-    """
-    Devuelve la coordenada (x, y) de una sala.
-    Si no existe, devuelve (0, 0).
-    """
-    return COORDS.get(sala_id, (0, 0))
