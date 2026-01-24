@@ -66,7 +66,6 @@ Usa diccionarios como:
 HABITACIONES: id -> {nombre, descripcion}
 SALIDAS: id -> { "n": "otraSala", ... }
 OBJETOS_EN_SALA: id -> ["llave", "antorcha", ...]
-COORDS: id -> (x,y) para el mapa ASCII
 Y funciones “de consulta”:
 descripcion_sala(sala_id)
 objetos_visibles(sala_id)
@@ -77,7 +76,6 @@ movimiento.py = moverse y mirar
 Tu archivo movimiento.py (ojo: en lo que me aparece cargado hay código mezclado, parece que pegaste funciones de movimiento dentro de ese archivo) tiene estas funciones usadas por juego.py: 
 mover(dir_): cambia estado.ubicacion si existe salida
 mirar(): describe sala + objetos visibles + salidas
-mapa_ascii(): muestra un listado tipo mapa con P/V/ . (Jugador/Visitada/No visitada)
 
 acciones.py = inventario y acciones sobre objetos
 Funciones usadas por juego.py: 
