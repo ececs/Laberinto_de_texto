@@ -1,15 +1,14 @@
 """
 movimiento.py
 =============
-Aquí está la lógica de movimiento y de "mirar".
-
-- No pedimos input() aquí.
-- No hacemos prints aquí (solo devolvemos textos).
-- juego.py imprime lo que devolvemos.
+Este módulo se encarga de:
+- Mostrar información de la sala actual con el comando mirar.
+- Mover al jugador por el laberinto con los comandos n/s/e/o.
+- Mostrar un mapa simple.
 
 Usa:
-- estado.py: guarda la sala actual (estado.ubicacion) y salas visitadas (estado.visitadas)
-- mundo.py: datos del laberinto (descripciones, salidas, objetos, coords)
+- estado.py para leer/modificar la ubicación del jugador.
+- mundo.py para consultar datos del laberinto como salidas, descripciones y objetos.
 """
 
 import estado
@@ -18,32 +17,30 @@ import mundo
 
 def mirar():
     """
-    Devuelve un texto con:
-    - descripción de la sala actual
-    - objetos visibles
-    - salidas disponibles
+    Construye y devuelve un texto con información de la sala actual:
+    1 - Describiendo la sala.
+    2 - Objetos que hay en el suelo.
+    3 - Direcciones por las que puede salir.
     """
 
-    sala = estado.ubicacion  # sala donde está el jugador
+    sala = estado.ubicacion  # Creamos variable sala y le asignamos el valor estado.ubicacion que viene de estado.py
 
-    # 1) Descripción
-    texto_sala = mundo.descripcion_sala(sala)
+    texto_sala = mundo.descripcion_sala(sala) # Le pedimos a mundo.py la descripción de la sala actual y la guardamos en texto_sala
 
-    # 2) Objetos visibles
-    objetos = mundo.objetos_visibles(sala)
+    objetos = mundo.objetos_visibles(sala) # Pedimos la lista de objetos que hay en la sala actual
     if objetos:
-        texto_objetos = ", ".join(objetos)
+        texto_objetos = ", ".join(objetos) # Unimos los elementos de la lista objetos, si hay uno queda igual, si son varios los separa con coma.
     else:
-        texto_objetos = "(ninguno)"
+        texto_objetos = "(No hay objetos en esta sala, mala suerte!)"
 
-    # 3) Salidas disponibles
-    salidas = mundo.salidas_disponibles(sala)
+    
+    salidas = mundo.salidas_disponibles(sala) # Pedimos a mundo.py las salidas disponibles desde la sala actual.
     if salidas:
-        texto_salidas = ", ".join(salidas.keys())  # por ejemplo: n, s, e, o
+        texto_salidas = ", ".join(salidas.keys())  # salidas es un diccionario en mundo.py con claves (n,s...) y  sus valores correspondientes (pasillo, armas...)
     else:
-        texto_salidas = "(ninguna)"
+        texto_salidas = "(No hay salidas, espabila y búscala)"
 
-    # Devolvemos el texto final
+    # Devolvemos el texto final uniendo descripcion de la sala (texto_sala), objetos (texto_objetos) y las salidas (texto_salidas)
     return (
         texto_sala
         + "\n\nObjetos visibles: " + texto_objetos
@@ -59,54 +56,30 @@ def mover(direccion):
     - Si hay salida -> cambia estado.ubicacion y devuelve mirar()
     """
 
-    # Si el usuario no puso nada
+    # Si el usuario no puso direccion.
     if not direccion:
-        raise ValueError("Dirección vacía. Usa n/s/e/o.")
+        raise ValueError("Debe haber una dirección. Usa n/s/e/o, no tenemos todo el día.")
 
     # Nos quedamos con la primera letra (por si escriben 'norte')
-    d = direccion[0].lower()
+    d = direccion[0].lower() # Convertimos el primer carácter del texto a minúscula, aceptamos "N","n","norte", "Norte".
 
     # Comprobamos que sea una dirección válida
     if d not in ("n", "s", "e", "o"):
-        raise ValueError("Dirección inválida. Usa n/s/e/o.")
+        raise ValueError("Dirección incorrecta. Debes usar n/s/e/o. A este ritmo no saldrás nunca")
 
-    sala_actual = estado.ubicacion
-    salidas = mundo.salidas_disponibles(sala_actual)
+    sala_actual = estado.ubicacion # Guardamos en sala_actual dónde está el jugador ahora mismo (viene de estado.py)
+    salidas = mundo.salidas_disponibles(sala_actual) # Pedimos a mundo.py el diccionario de SALIDAS de esa sala.
 
     # Si no existe salida en esa dirección
-    if d not in salidas:
-        return "No puedes ir en esa dirección."
+    if d not in salidas: # Si la letra no está en el diccionario de SALIDAS (mundo.py), no hay camino.
+        return "No puedes ir en esa dirección, se te complica la cosa." # No movemos al jugador, solo mostramos el mensaje.
 
     # Si existe salida, nos movemos
-    sala_destino = salidas[d]
-    estado.ubicacion = sala_destino
+    sala_destino = salidas[d] # Si la salida existe, buscamos en el diccionario a que sala vamos.
+    estado.ubicacion = sala_destino # Cambiamos la ubicacion del jugador, actualizando el estado en estado.py
 
     # Marcamos la sala como visitada
-    estado.visitadas.add(sala_destino)
+    estado.visitadas.add(sala_destino) # Añadimos la sala destino al conjunto de salas visitadas (estado.visitadas)
 
-    # Mostramos la nueva sala
-    return mirar()
+    return mirar() # Llamamos a mirar() para generar el texto de la nueva sala y lo devolvemos para que juego.py lo imprima.
 
-
-def mapa_ascii():
-    """
-    Mapa simple (lista de salas):
-    - P = jugador aquí
-    - V = sala visitada
-    - . = sala no visitada
-    """
-
-    lineas = []
-
-    # sorted(...) ordena para que siempre salga igual (built-in)
-    for sala in sorted(mundo.COORDS.keys()):
-        if sala == estado.ubicacion:
-            marca = "P"
-        elif sala in estado.visitadas:
-            marca = "V"
-        else:
-            marca = "."
-
-        lineas.append(marca + " " + sala)
-
-    return "\n".join(lineas)
