@@ -69,31 +69,26 @@ Ejecución recomendada (desde la raíz del proyecto):
     python3 -m src.main
 """
 
-import sys
-import juego  # importa el MÓDULO src/juego.py (debe tener def iniciar(): ...)
+import juego
 
-
-def main() -> None:
+def main():
     """Función principal para iniciar el juego."""
     try:
+        # Llamamos a la función iniciar() del módulo juego
         juego.iniciar()
+        # Si no se lanzan ninguna excepcion y finaliza el juego, 
+        # mostramos el mensaje de despedida
+        print("\nGracias por jugar a Laberinto de Texto.")
     except KeyboardInterrupt:
-        # Control elegante cuando la usuaria hace Ctrl+C
-        print("\nInterrumpido por el usuario. ¡Hasta pronto!")
-    except Exception as e:
-        # Mensaje amable y genérico (sin volcar traceback en pantalla)
-        print(f"Ha ocurrido un error inesperado: {e}")
+        # Si el usuario pulsa Ctrl+C, salimos sin error
+        print("\n¡Hasta pronto!")
+    except Exception as error:
+        # Capturamos cualquier error para que el programa no se cierre bruscamente
+        print(f"\nError: {error}")
         print("El juego se cerrará.")
-        print("Gracias por jugar a Laberinto de Texto.")
 
-
+# Comprobamos si el archivo se ejecuta directamente (python main.py)
+# Si es así, __name__ vale "__main__" y se ejecuta main()
+# Si el archivo se importa desde otro, no se ejecuta automáticamente
 if __name__ == "__main__":
-    # Devolver códigos de salida estándar
-    try:
-        main()
-        sys.exit(0)
-    except SystemExit as se:
-        # Permite respetar un sys.exit(n) interno si existiera
-        raise se
-    except Exception:
-        sys.exit(1)
+    main()
