@@ -124,7 +124,11 @@ def interpretar(linea):
     if comando == "usar":
         if not argumentos:
             return "Debes indicar qué objeto quieres usar. Ejemplo: usar llave o usar llave en puerta"
-        
+        # Declaramos las variables para objeto y destino porque si no dan error debido al scope
+        # de las variables
+        objeto = None
+        destino = None
+
         # Usar <objeto> con un solo argumento
         if len(argumentos) == 1:
             objeto = argumentos[0]
