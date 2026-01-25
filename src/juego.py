@@ -40,25 +40,6 @@ Notas futuras:
 import estado
 import movimiento
 import acciones
-from typing import Union
-
-AYUDA = """\
-Comandos:
-  n s e o        Moverse (norte/sur/este/oeste)
-  ir <dir>       Igual que moverse
-  mirar          Describir la sala actual
-  inventario     Ver inventario
-  coger <obj>    Recoger objeto
-  soltar <obj>   Soltar objeto
-  inspeccionar <obj>
-  usar <obj> [en <dest>]   (Reto 2)
-  ayuda          Esta ayuda
-  salir          Terminar
-"""
-
-import estado
-import movimiento
-import acciones
 
 # Texto de ayuda que se muestra al usuario
 AYUDA = """
