@@ -83,3 +83,18 @@ def mover(direccion):
 
     return mirar() # Llamamos a mirar() para generar el texto de la nueva sala y lo devolvemos para que juego.py lo imprima.
 
+def mapa_str():
+    texto = "MAPA (X=tú, V=visitada, -=no visitada)\n"
+
+    for fila in mundo.MAPA: #Recorre cada fila del mapa. Recorre cada sala de esa fila: si es donde estás pone X, si ya la visitaste pone V,si no pone -.
+        for sala_id in fila:
+            if sala_id == estado.ubicacion:
+                texto += "X "
+            elif sala_id in estado.visitadas:
+                texto += "V "
+            else:
+                texto += "- "
+        texto += "\n"
+
+    return texto
+
