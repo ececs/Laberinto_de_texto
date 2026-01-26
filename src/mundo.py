@@ -115,3 +115,10 @@ def salidas_disponibles(sala_id):
     Devuelve un diccionario con las salidas de la sala.
     """
     return dict(SALIDAS.get(sala_id, {}))  # Devuelve las salidas. dict() hace copia para no modificar el original.
+
+# Mapa simple 3x3: cada celda tiene el id de la sala (string)
+MAPA = [
+    ["tesoreria", "salida", "puente"],
+    ["cripta",    "pozo",   "armas"],
+    ["biblioteca","pasillo","entrada"],
+]
