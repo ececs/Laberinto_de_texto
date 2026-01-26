@@ -24,7 +24,7 @@ Interfaz pública:
 Comandos mínimos (Reto 1):
 - Movimiento: `n s e o` y `ir <dir>`
 - `mirar`, `inventario`, `coger <obj>`, `soltar <obj>`, `inspeccionar <obj>`
-- `ayuda`, `salir`
+- `ayuda, `salir`
 - `usar ...` delega a `acciones.usar`. En Reto 1 puede lanzar `NotImplementedError`.
 
 Validación/Errores (UT05):
@@ -51,6 +51,7 @@ Comandos:
   soltar <obj>   Soltar objeto
   inspeccionar <obj>
   usar <obj> [en <dest>]   (Reto 2)
+  mapa           Ver el mapa
   ayuda          Esta ayuda
   salir          Terminar
 """
@@ -82,6 +83,8 @@ def interpretar(linea: str) -> str | None:
         obj = args[0]
         destino = args[2] if len(args) >= 3 and args[1] == "en" else None
         return acciones.usar(obj, destino)
+    if cmd == "mapa":
+        return movimiento.mapa_str()
     if cmd == "ayuda":
         return AYUDA
     if cmd == "salir":
