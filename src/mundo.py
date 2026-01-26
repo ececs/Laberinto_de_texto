@@ -97,24 +97,33 @@ def descripcion_sala(sala_id):
     Devuelve un texto con el nombre y la descripción de una sala.
     Si la sala no existe, devuelve algo básico para no romper el juego.
     """
-    datos = HABITACIONES.get(sala_id, {})  # Buscamos la sala. Si no existe, usamos {} para no dar error.
-    nombre = datos.get("nombre", sala_id)  # Usamos sala_id por si falta "nombre", así tiene más robustez.
-    descripcion = datos.get("descripcion", "")  # Si falta "descripcion", ponemos cadena vacía (más robusto).
-    return "== " + nombre + " ==\n" + descripcion  # Devolvemos texto final con formato y salto de línea.
+    # Buscamos la sala. Si no existe, usamos {} para no dar error.
+    datos = HABITACIONES.get(sala_id, {})
+
+    # Usamos sala_id por si falta "nombre", así tiene más robustez.
+    nombre = datos.get("nombre", sala_id)
+
+    # Si falta "descripcion", ponemos cadena vacía (más robusto).
+    descripcion = datos.get("descripcion", "")
+
+    # Devolvemos texto final con formato y salto de línea.
+    return "== " + nombre + " ==\n" + descripcion
 
 
 def objetos_visibles(sala_id):
     """
     Devuelve una lista con los objetos que hay en una sala.
     """
-    return list(OBJETOS_EN_SALA.get(sala_id, []))  # Devuelve objetos de la sala. list() hace copia para consultar sin tocar el original.
+    # Devuelve objetos de la sala. list() hace copia para consultar sin tocar el original.
+    return list(OBJETOS_EN_SALA.get(sala_id, []))
 
 
 def salidas_disponibles(sala_id):
     """
     Devuelve un diccionario con las salidas de la sala.
     """
-    return dict(SALIDAS.get(sala_id, {}))  # Devuelve las salidas. dict() hace copia para no modificar el original.
+    # Devuelve las salidas. dict() hace copia para no modificar el original.
+    return dict(SALIDAS.get(sala_id, {}))
 
 # Mapa simple 3x3: cada celda tiene el id de la sala (string)
 MAPA = [
