@@ -89,7 +89,7 @@ def interpretar(linea):
     if comando == "mapa":
         if argumentos:
             return "El comando 'mapa' no necesita argumentos."
-        return movimiento.mostrar_mapa()
+        return movimiento.mapa_str()
     
     # Si el comando es "mirar", llamamos a mirar
     if comando == "mirar":
@@ -98,19 +98,19 @@ def interpretar(linea):
     # Si el comando es "inventario", llamamos a inventario_str
     if comando == "inventario":
         return acciones.inventario_str()
-    if cmd == "coger" and args:
-        return acciones.coger(" ".join(args))
-    if cmd == "soltar" and args:
-        return acciones.soltar(" ".join(args))
-    if cmd == "inspeccionar" and args:
-        return acciones.inspeccionar(" ".join(args))
-    if cmd == "usar" and args:
-        obj = args[0]
-        destino = args[2] if len(args) >= 3 and args[1] == "en" else None
+
+    if comando == "coger" and argumentos:
+        return acciones.coger(" ".join(argumentos))
+    if comando == "soltar" and argumentos:
+        return acciones.soltar(" ".join(argumentos))
+    if comando == "inspeccionar" and argumentos:
+        return acciones.inspeccionar(" ".join(argumentos))
+    if comando == "usar" and argumentos:
+        obj = argumentos[0]
+        destino = argumentos[2] if len(argumentos) >= 3 and argumentos[1] == "en" else None
         return acciones.usar(obj, destino)
-    if cmd == "mapa":
-        return movimiento.mapa_str()
-    if cmd == "ayuda":
+
+    if comando == "ayuda":
         return AYUDA
     
     # Si el comando es "salir", terminamos el juego
@@ -178,4 +178,3 @@ def iniciar():
 # Si es así, arranca el juego
 if __name__ == "__main__":
     iniciar()
-
