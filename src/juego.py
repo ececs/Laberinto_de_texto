@@ -51,6 +51,7 @@ Comandos:
   soltar <obj>   Soltar objeto
   inspeccionar <obj>
   mapa           Ver el mapa
+  reiniciar      Reinicia la partida desde el inicio
   ayuda          Esta ayuda
   salir          Terminar
 """
@@ -89,6 +90,12 @@ def interpretar(linea):
         if argumentos:
             return "El comando 'mapa' no necesita argumentos."
         return movimiento.mapa_str()
+    
+    # Si el comando es "reiniciar", reinicia ubicación, inventario, visitadas y victoria.
+    # Finalmente muestra la sala inicial otra vez.
+    if comando == "reiniciar":
+        estado.resetear()
+        return movimiento.mirar()
     
     # Si el comando es "mirar", llamamos a mirar
     if comando == "mirar":
