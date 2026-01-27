@@ -19,7 +19,7 @@ victoria = False
 
 
 def resetear():
-# Para volver el juego a su estado inicial.
+# Función para volver el juego a su estado inicial.
     """
     Reinicia el estado del juego a los valores iniciales.
     Se usaría si empezamos una nueva partida.
