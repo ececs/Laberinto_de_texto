@@ -79,10 +79,21 @@ def inventario_str() -> str:
     return "Inventario: " + (", ".join(estado.inventario) if estado.inventario else "(vacío)")
 
 # Función inspeccionar objetos.
-# Comprueba si el objeto está en tu inventario o visible en la sala actual.
-# Si está devuelve descripción, si no frase genérica.
-# Si el objeto no está ni en inventario ni en sala, devuelve "No ves"
 def inspeccionar(obj: str) -> str:
+    # Comprueba si el objeto es el pergamino.
+    # El pergamino solo se puede leer si está en el inventario.
+    if obj == "pergamino":
+        if obj not in estado.inventario:
+            return "El pergamino está ahí, pero necesitas cogerlo para poder leerlo."
+        return (
+            "Desenrollas el pergamino y lees:\n"
+            "\"Allí donde el agua cae en la oscuridad,\n"
+            "el camino hacia la libertad apunta al norte.\n"
+            "Pero ninguna puerta cede ante manos vacías.\""
+        )
+    # Comprueba si el objeto está en tu inventario o visible en la sala actual.
+    # Si está devuelve descripción, si no frase genérica.
+    # Si el objeto no está ni en inventario ni en sala, devuelve "No ves"
     if obj in estado.inventario or obj in mundo.objetos_visibles(estado.ubicacion):
         return OBJ_DESCS.get(obj, f"No ves nada especial en '{obj}'.")
     return f"No ves '{obj}'."
