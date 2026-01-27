@@ -2,7 +2,15 @@
 estado.py
 =========
 Este archivo guarda el estado del juego.
-Aquí se almacenan los datos que cambian mientras el jugador juega.
+
+Aquí se almacenan los datos que cambian mientras el jugador juega,
+como:
+- La sala en la que se encuentra.
+- Los objetos del inventario.
+- Las salas ya visitadas.
+- Si el jugador ha ganado la partida.
+
+Otros módulos consultan y modifican este estado durante el juego.
 """
 
 # Sala en la que empieza el jugador
