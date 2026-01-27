@@ -171,6 +171,11 @@ def iniciar():
         if respuesta:
             print(respuesta)
         
+        # Si el jugador llega a la sala "salida" con la llave en el inventario, gana automáticamente
+        if estado.ubicacion == "salida" and "llave" in estado.inventario:
+            estado.victoria = True
+    
+        
         # Comprobamos si el jugador ha ganado, y salimos del bucle
         if estado.victoria:
             print("\n¡Has escapado del laberinto!")
