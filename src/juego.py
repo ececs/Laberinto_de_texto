@@ -171,8 +171,9 @@ def iniciar():
         if respuesta:
             print(respuesta)
         
-        # Si el jugador llega a la sala "salida" con la llave en el inventario, gana automáticamente
+        # Si el jugador llega a la sala "salida" con la llave en el inventario, gana automáticamente.
         if estado.ubicacion == "salida" and "llave" in estado.inventario:
+            print("\nUsas la llave. La cerradura cede y la puerta se abre lentamente...")
             estado.victoria = True
     
         
