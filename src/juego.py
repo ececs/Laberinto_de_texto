@@ -50,7 +50,6 @@ Comandos:
   coger <obj>    Recoger objeto
   soltar <obj>   Soltar objeto
   inspeccionar <obj>
-  usar <obj> [en <dest>]   (Reto 2)
   mapa           Ver el mapa
   ayuda          Esta ayuda
   salir          Terminar
@@ -105,10 +104,6 @@ def interpretar(linea):
         return acciones.soltar(" ".join(argumentos))
     if comando == "inspeccionar" and argumentos:
         return acciones.inspeccionar(" ".join(argumentos))
-    if comando == "usar" and argumentos:
-        obj = argumentos[0]
-        destino = argumentos[2] if len(argumentos) >= 3 and argumentos[1] == "en" else None
-        return acciones.usar(obj, destino)
 
     if comando == "ayuda":
         return AYUDA
