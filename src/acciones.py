@@ -61,7 +61,7 @@ def inspeccionar(obj: str) -> str:
         if obj not in estado.inventario:
             return "El pergamino está ahí, pero necesitas cogerlo para poder leerlo."
         return (
-            "Desenrollas el pergamino y lees:\n"
+            "Desenrollas el pergamino y lees:\n\n"
             "\"Allí donde el agua cae en la oscuridad,\n"
             "el camino hacia la libertad apunta al norte.\n"
             "Pero ninguna puerta cede ante manos vacías.\""
