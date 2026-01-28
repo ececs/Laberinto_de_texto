@@ -41,15 +41,6 @@ Flujo esperado:
 1) Validación breve de entorno (opcional).
 2) Llamada a `juego.iniciar()`.
 
-Reto 1:
-- Simplemente arrancar el bucle del juego.
-
-Reto 2:
-- Sin cambios aquí; la lógica nueva se añade en otros módulos.
-
-Reto 3:
-- Sin cambios aquí; seguirá siendo el punto de entrada.
-
 Convenciones:
 - Mantener este archivo mínimo y legible para la corrección.
 """
