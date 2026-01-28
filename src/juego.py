@@ -89,7 +89,7 @@ def interpretar(linea):
     if comando == "mapa":
         if argumentos:
             return "El comando 'mapa' no necesita argumentos."
-        return movimiento.mapa_str()
+        return movimiento.mapa()
     
     # Si el comando es "reiniciar", reinicia ubicación, inventario, visitadas y victoria.
     # Finalmente muestra la sala inicial otra vez.
@@ -103,7 +103,7 @@ def interpretar(linea):
     
     # Si el comando es "inventario", llamamos a inventario_str
     if comando == "inventario":
-        return acciones.inventario_str()
+        return acciones.inventario()
 
     if comando == "coger" and argumentos:
         return acciones.coger(" ".join(argumentos))

@@ -50,7 +50,7 @@ def soltar(obj: str) -> str:
     return f"Has soltado '{obj}'."
 
 # Función inventario. Si tiene cosas, las une con comas, si está vacio, lo muestra.
-def inventario_str() -> str:
+def inventario() -> str:
     return "Inventario: " + (", ".join(estado.inventario) if estado.inventario else "(vacío)")
 
 # Función inspeccionar objetos.

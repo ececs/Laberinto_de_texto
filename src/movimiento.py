@@ -99,7 +99,7 @@ def mover(direccion):
     return mirar()
 
 
-def mapa_str():
+def mapa():
     texto = "MAPA (X=tú, V=visitada, -=no visitada)\n"
 
     # Recorre cada fila del mapa.
