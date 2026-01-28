@@ -84,7 +84,7 @@ def mover(direccion):
     # Si la letra no está en el diccionario de SALIDAS (mundo.py), no hay camino.
     if d not in salidas:
         # No movemos al jugador, solo mostramos el mensaje.
-        return "No puedes ir en esa dirección, se te complica la cosa."
+        return "No puedes ir en esa dirección, estas perdido en el laberinto."
 
     # Si la salida existe, buscamos en el diccionario a que sala vamos.
     sala_destino = salidas[d]
