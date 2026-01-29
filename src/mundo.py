@@ -24,7 +24,7 @@ HABITACIONES = {  # Diccionario con todas las salas: clave = id de la sala, valo
         "nombre": "Pasillo",
         "descripcion": "Las paredes son antiguas de piedra desgastada, no puedes ver mucho, pero este (e) y oeste (o) parecen transitables."
     },
-    "armas": {
+    "guardia": {
         "nombre": "Sala de Guardia",
         "descripcion": "Restos de armaduras y escudos oxidados, si alguien salió de aquí, fue hace mucho. Puedes volver al oeste (o) o continuar por el norte (n)."
     },
@@ -60,12 +60,12 @@ HABITACIONES = {  # Diccionario con todas las salas: clave = id de la sala, valo
 # Para cada sala, indicamos a qué sala se llega con n/s/e/o.
 SALIDAS = {
     "entrada":    {"n": "pasillo"},
-    "pasillo":    {"s": "entrada", "e": "armas", "o": "biblioteca", "n": "pozo"},
-    "armas":      {"o": "pasillo", "n": "puente"},
+    "pasillo":    {"s": "entrada", "e": "guardia", "o": "biblioteca", "n": "pozo"},
+    "guardia":      {"o": "pasillo", "n": "puente"},
     "biblioteca": {"e": "pasillo", "n": "cripta"},
     "cripta":     {"s": "biblioteca"},
     "pozo":       {"s": "pasillo", "n": "salida"},
-    "puente":     {"s": "armas", "n": "tesoreria"},
+    "puente":     {"s": "guardia", "n": "tesoreria"},
     "tesoreria":  {"s": "puente"},
     "salida":     {"s": "pozo"},
 }
@@ -75,7 +75,7 @@ SALIDAS = {
 # -----------------------------
 # Lista de objetos que hay en cada sala al inicio.
 OBJETOS_EN_SALA = {
-    "armas": ["llave"],
+    "guardia": ["llave"],
     "biblioteca": ["pergamino"],
     "cripta": ["medallon"],
     "pozo": ["antorcha"],
@@ -128,6 +128,6 @@ def salidas_disponibles(sala_id):
 # Mapa simple 3x3: cada celda tiene el id de la sala (string)
 MAPA = [
     ["tesoreria", "salida", "puente"],
-    ["cripta",    "pozo",   "armas"],
+    ["cripta",    "pozo",   "guardia"],
     ["biblioteca","pasillo","entrada"],
 ]
