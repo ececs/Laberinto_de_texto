@@ -51,7 +51,11 @@ def soltar(obj: str) -> str:
 
 # Función inventario. Si tiene cosas, las une con comas, si está vacio, lo muestra.
 def inventario() -> str:
-    return "Inventario: " + (", ".join(estado.inventario) if estado.inventario else "(vacío)")
+    if estado.inventario:
+        return "Inventario: " + ", ".join(estado.inventario)
+    else:
+        return "Inventario: (vacío)"
+
 
 # Función inspeccionar objetos.
 def inspeccionar(obj: str) -> str:
@@ -69,7 +73,12 @@ def inspeccionar(obj: str) -> str:
     # Comprueba si el objeto está en tu inventario o visible en la sala actual.
     # Si está devuelve descripción, si no frase genérica.
     # Si el objeto no está ni en inventario ni en sala, devuelve "No ves"
-    if obj in estado.inventario or obj in mundo.objetos_visibles(estado.ubicacion):
+    if obj in estado.inventario:
         return OBJ_DESCS.get(obj, f"No ves nada especial en '{obj}'.")
+
+    if obj in mundo.objetos_visibles(estado.ubicacion):
+        return OBJ_DESCS.get(obj, f"No ves nada especial en '{obj}'.")
+
     return f"No ves '{obj}'."
+
 
