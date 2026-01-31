@@ -126,7 +126,7 @@ def interpretar(linea):
 def iniciar():
     """Función principal que inicia el juego y gestiona el bucle principal."""
     # Mensaje de bienvenida
-    print("Bienvenido al Laberinto de Texto. Escribe 'ayuda' para ver comandos.\n")
+    print("\nBienvenido al Laberinto de Texto. Escribe 'ayuda' para ver comandos.\n")
     
     # Mostramos la primera sala, llamando a mirar()
     estado.visitadas.add(estado.ubicacion) # Para que sala inicial cuente como visitada
