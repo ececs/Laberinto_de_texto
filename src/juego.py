@@ -12,6 +12,15 @@ Funciones principales:
 - interpretar(linea): interpreta la línea de comando y llama a la función adecuada.
 - iniciar(): inicia el juego y gestiona el bucle principal.
 
+Responsabilidad:
+- Gestionar el flujo principal del juego.
+- Interpretar comandos de usuario y delegar acciones.
+- Mostrar mensajes de estado y ayuda.
+
+Relaciones:
+- Importa: `estado` para gestionar el estado del juego.
+- Importa: `movimiento` para manejar desplazamientos y descripciones de salas.
+- Importa: `acciones` para gestionar el inventario y la interacción con objetos.
 """
 
 import estado
@@ -114,6 +123,8 @@ def iniciar():
     Muestra el mensaje de bienvenida, inicializa el estado de la sala inicial y 
     mantiene la ejecución activa hasta que se cumpla la condición de victoria 
     o el usuario decida salir.
+
+    :return: No devuelve ningún valor.
     """
     # Mensaje de bienvenida
     print("\nBienvenido al Laberinto de Texto. Escribe 'ayuda' para ver comandos.\n")

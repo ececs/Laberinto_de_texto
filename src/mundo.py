@@ -12,7 +12,7 @@ Aquí solo devolvemos la información para que otros archivos la usen.
 """
 
 # -----------------------------
-# 2) Habitaciones (texto)
+# Habitaciones (texto)
 # -----------------------------
 # Guardamos nombre y descripción de cada sala.
 HABITACIONES = {  # Diccionario con todas las salas: clave = id de la sala, valor = nombre y descripción.
@@ -55,7 +55,7 @@ HABITACIONES = {  # Diccionario con todas las salas: clave = id de la sala, valo
 }
 
 # -----------------------------
-# 3) Salidas entre salas
+# Salidas entre salas
 # -----------------------------
 # Para cada sala, indicamos a qué sala se llega con n/s/e/o.
 SALIDAS = {
@@ -71,7 +71,7 @@ SALIDAS = {
 }
 
 # -----------------------------
-# 4) Objetos por sala
+# Objetos por sala
 # -----------------------------
 # Lista de objetos que hay en cada sala al inicio.
 OBJETOS_EN_SALA = {
@@ -89,13 +89,20 @@ OBJETOS_EN_SALA = {
 }
 
 # ------------------------------------------------
-# 5) Funciones de consulta (NO cambian el mundo)
+# Funciones de consulta (NO cambian el mundo)
 # ------------------------------------------------
 
 def descripcion_sala(sala_id):
     """
-    Devuelve un texto con el nombre y la descripción de una sala.
-    Si la sala no existe, devuelve algo básico para no romper el juego.
+    Genera una cadena formateada con el título y descripción de una estancia.
+
+    Utiliza el identificador de sala para acceder al diccionario global de 
+    habitaciones, garantizando robustez mediante el uso de valores por defecto.
+
+    :param sala_id: El identificador único de la sala a consultar.
+    :type sala_id: str
+    :return: Texto con formato para mostrar al usuario.
+    :rtype: str
     """
     # Buscamos la sala. Si no existe, usamos {} para no dar error.
     datos = HABITACIONES.get(sala_id, {})
@@ -112,7 +119,15 @@ def descripcion_sala(sala_id):
 
 def objetos_visibles(sala_id):
     """
-    Devuelve una lista con los objetos que hay en una sala.
+    Retorna los ítems disponibles en una ubicación determinada.
+
+    Se realiza una copia de la lista para asegurar que la consulta no afecte 
+    accidentalmente a la estructura de datos original.
+
+    :param sala_id: El identificador de la habitación actual.
+    :type sala_id: str
+    :return: Una lista con los nombres de los objetos encontrados.
+    :rtype: list
     """
     # Devuelve objetos de la sala. list() hace copia para consultar sin tocar el original.
     return list(OBJETOS_EN_SALA.get(sala_id, []))
@@ -120,7 +135,15 @@ def objetos_visibles(sala_id):
 
 def salidas_disponibles(sala_id):
     """
-    Devuelve un diccionario con las salidas de la sala.
+    Recupera las rutas de navegación conectadas a una estancia.
+
+    Permite identificar qué direcciones (n, s, e, o) son válidas desde la 
+    posición actual.
+
+    :param sala_id: Identificador de la estancia origen.
+    :type sala_id: str
+    :return: Diccionario de conexiones (dirección: sala_destino).
+    :rtype: dict
     """
     # Devuelve las salidas. dict() hace copia para no modificar el original.
     return dict(SALIDAS.get(sala_id, {}))

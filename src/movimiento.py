@@ -1,14 +1,11 @@
 """
-movimiento.py
-=============
-Este módulo se encarga de:
-- Mostrar información de la sala actual con el comando mirar.
-- Mover al jugador por el laberinto con los comandos n/s/e/o.
-- Mostrar un mapa simple.
+Módulo movimiento.py
 
-Usa:
-- estado.py para leer/modificar la ubicación del jugador.
-- mundo.py para consultar datos del laberinto como salidas, descripciones y objetos.
+Implementa la lógica de navegación y exploración del mundo.
+
+Se encarga de gestionar el desplazamiento del usuario entre nodos (habitaciones) 
+y de la generación de la interfaz textual descriptiva de cada ubicación, 
+interactuando con los estados globales y la base de datos del mundo.
 """
 
 import estado
@@ -17,10 +14,17 @@ import mundo
 
 def mirar():
     """
-    Construye y devuelve un texto con información de la sala actual:
-    1 - Describiendo la sala.
-    2 - Objetos que hay en el suelo.
-    3 - Direcciones por las que puede salir.
+    Construye la representación textual de la ubicación actual del jugador.
+
+    Consulta el módulo `mundo` para obtener los metadatos de la sala, 
+    los objetos presentes y las conexiones disponibles, formateando la 
+    información para su visualización en consola.
+
+    :return: Un string detallado con la descripción, objetos y salidas.
+    :rtype: str
+    
+    .. note::
+       Esta función es puramente informativa y no altera el estado del juego.
     """
 
     # Creamos variable sala y le asignamos el valor estado.ubicacion que viene de estado.py
@@ -57,10 +61,16 @@ def mirar():
 
 def mover(direccion):
     """
-    Intenta mover al jugador en una dirección:
-    - Si la dirección es inválida -> ValueError (juego.py lo captura)
-    - Si no hay salida -> mensaje claro
-    - Si hay salida -> cambia estado.ubicacion y devuelve mirar()
+    Ejecuta el desplazamiento del jugador hacia una nueva sala.
+
+    Valida la entrada del usuario, verifica la existencia de una conexión 
+    en el mapa y actualiza la ubicación en el estado global. 
+    Lanza excepciones ante entradas no válidas.
+
+    :param direccion: El punto cardinal o comando de dirección (n, s, e, o).
+    :type direccion: str
+    :return: El resultado de invocar a `mirar()` en la nueva sala o mensaje de error.
+    :rtype: str
     """
 
     # Si el usuario no puso direccion.
@@ -100,6 +110,15 @@ def mover(direccion):
 
 
 def mapa():
+    """
+    Genera una representación visual simplificada del progreso del jugador.
+
+    Itera sobre la estructura de datos del mapa para identificar la posición 
+    relativa del usuario y las áreas ya exploradas.
+
+    :return: Un mapa en formato ASCII con la leyenda de estado.
+    :rtype: str
+    """
     texto = "MAPA (X=tú, V=visitada, -=no visitada)\n"
 
     # Recorre cada fila del mapa.

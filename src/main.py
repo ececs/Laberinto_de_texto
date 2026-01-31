@@ -13,10 +13,9 @@ Responsabilidad:
 - Muestra mensajes de despedida o error según corresponda.
 
 Relaciones:
-- Importa: `juego` (para iniciar el bucle principal del juego).
+- Importa: `juego` para iniciar el bucle principal del juego.
 Funciones principales:
 - main(): función de entrada que configura el entorno de ejecución del juego.
-
 """
 
 import juego
