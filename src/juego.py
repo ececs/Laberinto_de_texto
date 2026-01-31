@@ -116,7 +116,7 @@ def iniciar():
     o el usuario decida salir.
     """
     # Mensaje de bienvenida
-    print("Bienvenido al Laberinto de Texto. Escribe 'ayuda' para ver comandos.\n")
+    print("\nBienvenido al Laberinto de Texto. Escribe 'ayuda' para ver comandos.\n")
     
     # Mostramos la primera sala, llamando a mirar()
     estado.visitadas.add(estado.ubicacion) # Para que sala inicial cuente como visitada
