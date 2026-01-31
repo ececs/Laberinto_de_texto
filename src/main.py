@@ -1,63 +1,36 @@
 """
-LABERINTO DE TEXTO - Proyecto 9
-Desarrollo de Aplicaciones Web (DAW)
-Curso 2025-2026
+Módulo main.py
 
-RETO 1: Implementación Básica
+Punto de entrada principal para el proyecto Laberinto de Texto.
 
-Integrantes del equipo:
-- Persona 1: [Nombre] - Sistema de Habitaciones y Navegación
-- Persona 2: [Nombre] - Sistema de Inventario
-- Persona 3: [Nombre] - Parser de Comandos y Lógica Principal
-
-Descripción:
-Un juego de aventura textual donde el jugador debe navegar por un
-laberinto de 9 habitaciones, recoger objetos clave y encontrar la
-salida.
-
-Funcionalidades implementadas:
-✅ 9 habitaciones interconectadas
-✅ Navegación en 4 direcciones (N, S, E, O)
-✅ Sistema de inventario (máximo 5 objetos)
-✅ Mapa de habitaciones visitadas
-✅ Manejo de excepciones para inventario
-✅ Sistema de comandos flexible
-"""
-
-"""
-main.py — Punto de entrada del programa
-======================================
+Este script actúa como el orquestador del arranque, encargándose de invocar 
+el bucle principal del juego y gestionar las excepciones críticas de la 
+aplicación para ofrecer una salida limpia al usuario.
 
 Responsabilidad:
-- Orquestar el arranque del juego.
-- Configurar (opcional) el entorno o argumentos CLI.
-- Invocar a `juego.iniciar()` y no contener lógica del juego.
+- Inicia el juego llamando a la función `iniciar()` del módulo `juego`.
+- Captura y maneja excepciones globales para evitar trazas de error en la consola.
+- Muestra mensajes de despedida o error según corresponda.
 
 Relaciones:
-- Importa solo `juego`.
-- No importa `acciones`, `movimiento`, `mundo` ni `estado` directamente para evitar acoplamiento.
-
-Flujo esperado:
-1) Validación breve de entorno (opcional).
-2) Llamada a `juego.iniciar()`.
-
-Convenciones:
-- Mantener este archivo mínimo y legible para la corrección.
-"""
-
-
+- Importa: `juego` (para iniciar el bucle principal del juego).
+Funciones principales:
+- main(): función de entrada que configura el entorno de ejecución del juego.
 
 """
-main.py — Punto de entrada del programa
-Patrón A: `juego` es un MÓDULO que expone la función `iniciar()`.
 
-Responsabilidad:
-- Arrancar el juego y capturar errores generales sin mostrar tracebacks
-  (limpio para la presentación en clase).
-- NO contiene lógica de juego.
+import juego
 
-Ejecución recomendada (desde la raíz del proyecto):
-    python3 -m src.main
+def main():
+    """
+    Función de entrada que configura el entorno de ejecución del juego.
+
+    Se encarga de llamar a la lógica de inicio del módulo `juego` y captura 
+    las interrupciones de teclado o errores inesperados para evitar que se 
+    muestre el traceback de Python en la consola.
+
+    :return: No devuelve ningún valor.
+    :raises Exception: Captura errores genéricos durante la ejecución para informar al usuario.
 """
 
 import juego

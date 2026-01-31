@@ -3,38 +3,15 @@
 
 """
 juego.py — Bucle principal + parser de comandos
-===============================================
 
-Responsabilidad:
-- Implementar el bucle de entrada/salida por consola.
-- Parsear la línea del usuario y delegar la acción al módulo correcto.
-- Mostrar mensajes (descripciones, errores, ayuda).
+Implementa el bucle de entrada/salida por consola, interpreta la línea del 
+usuario y delega la acción al módulo correspondiente, además de gestionar 
+la visualización de mensajes de estado y ayuda
 
-Relaciones:
-- Importa: `estado` (para leer/escribir ubicacion, inventario, visitadas...),
-           `mundo` (para describir habitaciones, objetos visibles, conexiones),
-           `movimiento` (para comandos de moverse),
-           `acciones` (para coger/soltar/inspeccionar/usar).
-- No contiene datos del mundo ni reglas de acciones; solo coordina.
+Funciones principales:
+- interpretar(linea): interpreta la línea de comando y llama a la función adecuada.
+- iniciar(): inicia el juego y gestiona el bucle principal.
 
-Interfaz pública:
-- `iniciar() -> None`: imprime bienvenida, primer "mirar" y entra en el bucle.
-- `interpretar(linea: str) -> str | None`: convierte la línea en comando/args y delega.
-
-Comandos mínimos (Reto 1):
-- Movimiento: `n s e o` y `ir <dir>`
-- `mirar`, `inventario`, `coger <obj>`, `soltar <obj>`, `inspeccionar <obj>`
-- `ayuda, `salir`
-- `usar ...` delega a `acciones.usar`. En Reto 1 puede lanzar `NotImplementedError`.
-
-Validación/Errores (UT05):
-- Capturar `ValueError` (entradas inválidas, objetos inexistentes).
-- Capturar `NotImplementedError` (acciones aún no implementadas en Reto 1).
-- Mensajes amigables (sin stacktrace).
-
-Notas futuras:
-- Reto 2: mostrar salud/resumen de estado si hace falta.
-- Reto 3: imprimir resultados de encuentros/eventos que gestione otro módulo.
 """
 
 import estado
@@ -59,8 +36,15 @@ Comandos:
 def interpretar(linea):
     """
     Interpreta el comando introducido por el usuario y ejecuta la acción correspondiente.
-    Devuelve el mensaje de respuesta o None.
+
+    Divide la cadena de entrada y determina mediante el primer token qué función 
+    del motor de juego debe invocarse.
+
+    :param linea: La línea de comando completa introducida por el usuario.
+    :type linea: str
+    :return: El mensaje de respuesta generado tras la acción o un código de salida.
     """
+  
     # Dividimos la línea en una lista de palabras
     palabras = linea.strip().split()
     
@@ -124,7 +108,13 @@ def interpretar(linea):
 
 
 def iniciar():
-    """Función principal que inicia el juego y gestiona el bucle principal."""
+    """
+    Inicia el bucle principal del juego.
+
+    Muestra el mensaje de bienvenida, inicializa el estado de la sala inicial y 
+    mantiene la ejecución activa hasta que se cumpla la condición de victoria 
+    o el usuario decida salir.
+    """
     # Mensaje de bienvenida
     print("Bienvenido al Laberinto de Texto. Escribe 'ayuda' para ver comandos.\n")
     
