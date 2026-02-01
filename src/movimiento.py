@@ -12,7 +12,7 @@ import estado
 import mundo
 
 
-def mirar():
+def mirar() -> str:
     """
     Construye la representación textual de la ubicación actual del jugador.
 
@@ -59,7 +59,7 @@ def mirar():
     )
 
 
-def mover(direccion):
+def mover(direccion: str) -> str:
     """
     Ejecuta el desplazamiento del jugador hacia una nueva sala.
 
@@ -71,6 +71,8 @@ def mover(direccion):
     :type direccion: str
     :return: El resultado de invocar a `mirar()` en la nueva sala o mensaje de error.
     :rtype: str
+    :raises ValueError: Si la dirección está vacía, es inválida (no es n/s/e/o),
+                    o no existe salida en esa dirección desde la sala actual.
     """
 
     # Si el usuario no puso direccion.
@@ -109,7 +111,7 @@ def mover(direccion):
     return mirar()
 
 
-def mapa():
+def mapa() -> str:
     """
     Genera una representación visual simplificada del progreso del jugador.
 
@@ -118,6 +120,9 @@ def mapa():
 
     :return: Un mapa en formato ASCII con la leyenda de estado.
     :rtype: str
+    .. note::
+       Esta función no modifica el estado del juego y es útil para la 
+       orientación del jugador dentro del laberinto.
     """
     texto = "MAPA (X=tú, V=visitada, -=no visitada)\n"
 

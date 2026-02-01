@@ -50,7 +50,7 @@ HABITACIONES = {  # Diccionario con todas las salas: clave = id de la sala, valo
     },
     "salida": {
         "nombre": "Puerta de Salida",
-        "descripcion": "Una gran puerta se alza frente a ti. El aire es más fresco aquí, pero algo te dice que aún no eres libre."
+        "descripcion": "Una gran puerta se alza frente a ti. El aire es más fresco aquí, pero algo te dice que ya casi eres libre."
     },
 }
 

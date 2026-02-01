@@ -42,7 +42,7 @@ Comandos:
   salir          Terminar
 """
 
-def interpretar(linea):
+def interpretar(linea) -> str:
     """
     Interpreta el comando introducido por el usuario y ejecuta la acción correspondiente.
 
@@ -52,9 +52,10 @@ def interpretar(linea):
     :param linea: La línea de comando completa introducida por el usuario.
     :type linea: str
     :return: El mensaje de respuesta generado tras la acción o un código de salida.
+    :rtype: str
     """
-  
-    # Dividimos la línea en una lista de palabras
+    
+    # Dividimos la línea en palabras y limpiamos espacios
     palabras = linea.strip().split()
     
     # Si no hay palabras, devolvemos cadena vacía
@@ -116,7 +117,7 @@ def interpretar(linea):
     return "No entiendo ese comando. Escribe 'ayuda' para ver opciones."
 
 
-def iniciar():
+def iniciar() -> None:
     """
     Inicia el bucle principal del juego.
 
@@ -125,6 +126,11 @@ def iniciar():
     o el usuario decida salir.
 
     :return: No devuelve ningún valor.
+    :rtype: None
+    :raises Exception: Captura errores inesperados durante la ejecución para informar al usuario.
+    :raises NotImplementedError: Si la funcionalidad solicitada no está implementada.
+    :raises ValueError: Si la entrada es inválida o incompleta.
+    :raises Exception: Si ocurre cualquier otro error inesperado.
     """
     # Mensaje de bienvenida
     print("\nBienvenido al Laberinto de Texto. Escribe 'ayuda' para ver comandos.\n")

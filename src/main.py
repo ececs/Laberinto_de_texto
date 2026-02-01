@@ -30,12 +30,9 @@ def main():
 
     :return: No devuelve ningún valor.
     :raises Exception: Captura errores genéricos durante la ejecución para informar al usuario.
-"""
-
-import juego
-
-def main():
-    """Función principal para iniciar el juego."""
+    :raises KeyboardInterrupt: Si el usuario pulsa Ctrl+C.
+    """
+    
     try:
         # Llamamos a la función iniciar() del módulo juego
         juego.iniciar()
