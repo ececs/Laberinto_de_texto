@@ -120,6 +120,7 @@ def mapa() -> str:
 
     :return: Un mapa en formato ASCII con la leyenda de estado.
     :rtype: str
+
     .. note::
        Esta función no modifica el estado del juego y es útil para la 
        orientación del jugador dentro del laberinto.
