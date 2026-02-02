@@ -1,40 +1,15 @@
 Laberinto de Texto
 ==================
 
-Este proyecto implementa un juego de aventura textual modularizado en Python, 
+Este proyecto implementa un juego de aventura textual modularizado en Python,
 desarrollado como parte del Ciclo Formativo de Grado Superior (DAW).
 
 .. toctree::
    :maxdepth: 2
    :caption: Contenidos:
 
-Punto de Entrada
-----------------
-.. automodule:: main
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   modules
 
-Lógica del Juego
-----------------
-.. automodule:: juego
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Navegación y Mundo
-------------------
-.. automodule:: movimiento
-   :members:
-   :show-inheritance:
-
-.. automodule:: mundo
-   :members:
-
-Gestión de Acciones y Estado
-----------------------------
-.. automodule:: acciones
-   :members:
-
-.. automodule:: estado
-   :members:
+.. note::
+   Hecho: los archivos por módulo se han generado con `sphinx-apidoc`.
+   Si quieres el contenido directamente en la página principal, coméntalo.
