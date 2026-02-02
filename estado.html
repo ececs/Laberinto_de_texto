@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>estado module &#8212; documentación de Laberinto de Texto - 1.0</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=4936afed"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="juego module" href="juego.html" />
+    <link rel="prev" title="acciones module" href="acciones.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-estado">
+<span id="estado-module"></span><h1>estado module<a class="headerlink" href="#module-estado" title="Link to this heading">¶</a></h1>
+<p>Módulo estado.py</p>
+<p>Este módulo centraliza el estado de la sesión de juego mediante variables globales.</p>
+<p>Gestiona la persistencia de datos dinámicos como la posición del usuario, 
+el contenido del inventario y el progreso de la partida (salas visitadas y 
+condición de victoria).</p>
+<p>Responsabilidades:
+- Mantener variables globales que representan el estado actual del juego.
+- Proveer una función para reiniciar el estado a los valores iniciales.</p>
+<p>Variables principales:
+- ubicacion (str): Identificador de la sala actual del jugador.
+- inventario (list): Lista de objetos que el jugador ha recogido.
+- visitadas (set): Conjunto de salas que el jugador ha visitado.
+- victoria (bool): Indica si el jugador ha ganado la partida.</p>
+<p>Funciones principales:
+- resetear(): Reinicia el estado del juego a los valores iniciales.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="estado.resetear">
+<span class="sig-prename descclassname"><span class="pre">estado.</span></span><span class="sig-name descname"><span class="pre">resetear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/estado.html#resetear"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#estado.resetear" title="Link to this definition">¶</a></dt>
+<dd><p>Reinicia todas las variables de estado a sus valores por defecto.</p>
+<p>Esta función utiliza la palabra clave “global” para modificar las variables 
+definidas en el nivel superior del script, asegurando que los cambios 
+persistan en todo el programa.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>No devuelve ningún valor.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Es fundamental para implementar la funcionalidad de “reiniciar partida” 
+sin necesidad de cerrar el intérprete de Python.</p>
+</div>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Laberinto de Texto</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navegación</h3>
+<p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="acciones.html">acciones module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">estado module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="juego.html">juego module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="movimiento.html">movimiento module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mundo.html">mundo module</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="acciones.html" title="capítulo anterior">acciones module</a></li>
+      <li>Next: <a href="juego.html" title="próximo capítulo">juego module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Pablo Diaz, Rodrigo Sanmartin, Eudaldo Cal.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/estado.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

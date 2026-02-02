@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>acciones module &#8212; documentación de Laberinto de Texto - 1.0</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=4936afed"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="estado module" href="estado.html" />
+    <link rel="prev" title="src" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-acciones">
+<span id="acciones-module"></span><h1>acciones module<a class="headerlink" href="#module-acciones" title="Link to this heading">¶</a></h1>
+<p>Módulo acciones.py</p>
+<p>Gestiona la lógica de interacción entre el jugador y los objetos 
+del mundo. Implementa las funciones necesarias para la manipulación del 
+inventario y la inspección detallada de elementos del entorno.</p>
+<p>Responsabilidad:
+- Proporcionar funciones para coger y soltar objetos.
+- Permitir al jugador inspeccionar objetos para obtener descripciones.
+- Gestionar el inventario del jugador.</p>
+<p>Relaciones:
+- Importa: <cite>estado</cite> para acceder al inventario y ubicación del jugador.
+- Importa: <cite>mundo</cite> para interactuar con los objetos presentes en las salas.</p>
+<p>Funciones principales:
+- coger(obj): permite al jugador recoger un objeto de la sala actual.
+- soltar(obj): permite al jugador soltar un objeto en la sala actual.
+- inventario(): muestra los objetos actualmente en el inventario del jugador.
+- inspeccionar(obj): proporciona una descripción detallada de un objeto.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="acciones.coger">
+<span class="sig-prename descclassname"><span class="pre">acciones.</span></span><span class="sig-name descname"><span class="pre">coger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/acciones.html#coger"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#acciones.coger" title="Link to this definition">¶</a></dt>
+<dd><p>Transfiere un objeto desde la habitación actual al inventario del jugador.</p>
+<p>Verifica la existencia del objeto en la sala y, en caso positivo, realiza 
+la mutación de las listas correspondientes en el estado global y el mundo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>obj</strong> (<em>str</em>) – Nombre del objeto que se desea recoger.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Mensaje informativo sobre el éxito o fracaso de la acción.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Esta función modifica directamente la colección de objetos de la sala 
+en el módulo <cite>mundo</cite>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="acciones.inspeccionar">
+<span class="sig-prename descclassname"><span class="pre">acciones.</span></span><span class="sig-name descname"><span class="pre">inspeccionar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/acciones.html#inspeccionar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#acciones.inspeccionar" title="Link to this definition">¶</a></dt>
+<dd><p>Devuelve la descripción detallada de un objeto si es accesible.</p>
+<p>Comprueba si el objeto está en el inventario o en la sala actual. Incluye 
+lógica especial para el objeto “pergamino”, que requiere estar en posesión 
+del jugador para ser leído.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>obj</strong> (<em>str</em>) – El nombre del objeto a examinar.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>La descripción del objeto o un mensaje de error si no es visible.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Si el objeto es “pergamino”, se requiere una validación de seguridad 
+adicional sobre el inventario.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="acciones.inventario">
+<span class="sig-prename descclassname"><span class="pre">acciones.</span></span><span class="sig-name descname"><span class="pre">inventario</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/acciones.html#inventario"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#acciones.inventario" title="Link to this definition">¶</a></dt>
+<dd><p>Genera una representación textual de los objetos que tiene el jugador.</p>
+<p>Aplica lógica condicional para manejar el caso de inventario vacío o 
+formatear la lista de ítems mediante concatenación de cadenas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Cadena con la lista de objetos o aviso de inventario vacío.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="acciones.soltar">
+<span class="sig-prename descclassname"><span class="pre">acciones.</span></span><span class="sig-name descname"><span class="pre">soltar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/acciones.html#soltar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#acciones.soltar" title="Link to this definition">¶</a></dt>
+<dd><p>Deposita un objeto del inventario en la habitación actual.</p>
+<p>Realiza la operación inversa a <cite>coger</cite>, validando primero que el usuario 
+posea el ítem antes de actualizar las estructuras de datos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>obj</strong> (<em>str</em>) – Nombre del objeto a descartar.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Confirmación de la acción realizada.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Laberinto de Texto</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navegación</h3>
+<p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">acciones module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="estado.html">estado module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="juego.html">juego module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="movimiento.html">movimiento module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mundo.html">mundo module</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="modules.html" title="capítulo anterior">src</a></li>
+      <li>Next: <a href="estado.html" title="próximo capítulo">estado module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Pablo Diaz, Rodrigo Sanmartin, Eudaldo Cal.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/acciones.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

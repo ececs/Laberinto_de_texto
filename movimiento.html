@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>movimiento module &#8212; documentación de Laberinto de Texto - 1.0</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=4936afed"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/translations.js?v=f85f4cfb"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="mundo module" href="mundo.html" />
+    <link rel="prev" title="main module" href="main.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-movimiento">
+<span id="movimiento-module"></span><h1>movimiento module<a class="headerlink" href="#module-movimiento" title="Link to this heading">¶</a></h1>
+<p>Módulo movimiento.py</p>
+<p>Implementa la lógica de navegación y exploración del mundo.</p>
+<p>Se encarga de gestionar el desplazamiento del usuario entre nodos (habitaciones) 
+y de la generación de la interfaz textual descriptiva de cada ubicación, 
+interactuando con los estados globales y la base de datos del mundo.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="movimiento.mapa">
+<span class="sig-prename descclassname"><span class="pre">movimiento.</span></span><span class="sig-name descname"><span class="pre">mapa</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/movimiento.html#mapa"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#movimiento.mapa" title="Link to this definition">¶</a></dt>
+<dd><p>Genera una representación visual simplificada del progreso del jugador.</p>
+<p>Itera sobre la estructura de datos del mapa para identificar la posición 
+relativa del usuario y las áreas ya exploradas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Un mapa en formato ASCII con la leyenda de estado.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Esta función no modifica el estado del juego y es útil para la 
+orientación del jugador dentro del laberinto.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="movimiento.mirar">
+<span class="sig-prename descclassname"><span class="pre">movimiento.</span></span><span class="sig-name descname"><span class="pre">mirar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/movimiento.html#mirar"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#movimiento.mirar" title="Link to this definition">¶</a></dt>
+<dd><p>Construye la representación textual de la ubicación actual del jugador.</p>
+<p>Consulta el módulo <cite>mundo</cite> para obtener los metadatos de la sala, 
+los objetos presentes y las conexiones disponibles, formateando la 
+información para su visualización en consola.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Un string detallado con la descripción, objetos y salidas.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Esta función es puramente informativa y no altera el estado del juego.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="movimiento.mover">
+<span class="sig-prename descclassname"><span class="pre">movimiento.</span></span><span class="sig-name descname"><span class="pre">mover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direccion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/movimiento.html#mover"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#movimiento.mover" title="Link to this definition">¶</a></dt>
+<dd><p>Ejecuta el desplazamiento del jugador hacia una nueva sala.</p>
+<p>Valida la entrada del usuario, verifica la existencia de una conexión 
+en el mapa y actualiza la ubicación en el estado global. 
+Lanza excepciones ante entradas no válidas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>direccion</strong> (<em>str</em>) – El punto cardinal o comando de dirección (n, s, e, o).</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>El resultado de invocar a <cite>mirar()</cite> en la nueva sala o mensaje de error.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Muestra<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Si la dirección está vacía, es inválida (no es n/s/e/o),
+o no existe salida en esa dirección desde la sala actual.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Laberinto de Texto</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navegación</h3>
+<p class="caption" role="heading"><span class="caption-text">Contenidos:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="acciones.html">acciones module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="estado.html">estado module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="juego.html">juego module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">movimiento module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mundo.html">mundo module</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="main.html" title="capítulo anterior">main module</a></li>
+      <li>Next: <a href="mundo.html" title="próximo capítulo">mundo module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Pablo Diaz, Rodrigo Sanmartin, Eudaldo Cal.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/movimiento.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
