@@ -10,6 +10,6 @@ desarrollado como parte del Ciclo Formativo de Grado Superior (DAW).
 
    modules
 
-.. note::
-   Hecho: los archivos por módulo se han generado con `sphinx-apidoc`.
-   Si quieres el contenido directamente en la página principal, coméntalo.
+.. raw:: html
+
+   <!-- Nota eliminada: se generó inicialmente con sphinx-apidoc -->
