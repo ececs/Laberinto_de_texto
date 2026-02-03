@@ -122,7 +122,7 @@ def inspeccionar(obj: str) -> str:
         return (
             "Desenrollas el pergamino y lees:\n\n"
             "\"Allí donde el agua cae en la oscuridad,\n"
-            "el camino hacia la libertad apunta al norte.\n"
+            "el camino hacia la libertad apunta al sur.\n"
             "Pero ninguna puerta cede ante manos vacías.\""
         )
     # Comprueba si el objeto está en tu inventario o visible en la sala actual.

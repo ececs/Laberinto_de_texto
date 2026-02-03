@@ -75,13 +75,13 @@ SALIDAS = {
 # -----------------------------
 # Lista de objetos que hay en cada sala al inicio.
 OBJETOS_EN_SALA = {
-    "guardia": ["llave"],
+    "entrada": ["antorcha"],
     "biblioteca": ["pergamino"],
     "cripta": ["medallon"],
-    "pozo": ["antorcha"],
+    "pozo": ["llave"],
 
     # Salas sin objetos
-    "entrada": [],
+    "guardia": [],
     "pasillo": [],
     "puente": [],
     "tesoreria": [],
