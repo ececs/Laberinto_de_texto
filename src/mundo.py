@@ -59,15 +59,15 @@ HABITACIONES = {  # Diccionario con todas las salas: clave = id de la sala, valo
 # -----------------------------
 # Para cada sala, indicamos a qué sala se llega con n/s/e/o.
 SALIDAS = {
-    "entrada":    {"n": "pasillo"},
-    "pasillo":    {"s": "entrada", "e": "guardia", "o": "biblioteca", "n": "pozo"},
-    "guardia":      {"o": "pasillo", "n": "puente"},
-    "biblioteca": {"e": "pasillo", "n": "cripta"},
-    "cripta":     {"s": "biblioteca"},
-    "pozo":       {"s": "pasillo", "n": "salida"},
-    "puente":     {"s": "guardia", "n": "tesoreria"},
-    "tesoreria":  {"s": "puente"},
-    "salida":     {"s": "pozo"},
+    "entrada":    {"e": "pasillo", "s": "guardia"},
+    "pasillo":    {"o": "entrada", "e": "biblioteca", "s": "cripta"},
+    "biblioteca":      {"o": "pasillo", "s": "pozo"},
+    "guardia": {"n": "entrada", "e": "cripta", "s": "puente"},
+    "cripta":     {"n": "pasillo", "o": "guardia", "e": "pozo", "s": "tesoreria" },
+    "pozo":       {"n": "biblioteca", "o": "cripta" , "s": "salida"},
+    "puente":     {"n": "guardia", "e": "tesoreria"},
+    "tesoreria":  {"n": "cripta", "o": "puente", "e": "salida"},
+    "salida":     {"n": "pozo", "o": "tesoreria"},
 }
 
 # -----------------------------
