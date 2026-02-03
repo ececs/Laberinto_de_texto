@@ -26,7 +26,7 @@ HABITACIONES = {  # Diccionario con todas las salas: clave = id de la sala, valo
     },
     "guardia": {
         "nombre": "Sala de Guardia",
-        "descripcion": "Restos de armaduras y escudos oxidados. Al norte (n) puedes volver a la entrada. Al este (e) se abre una cripta, y al sur (s) hay un puente."
+        "descripcion": "Restos de armaduras y escudos oxidados. Al este (e) se abre una cripta, y al sur (s) hay un puente."
     },
     "biblioteca": {
         "nombre": "Biblioteca",
@@ -61,8 +61,8 @@ HABITACIONES = {  # Diccionario con todas las salas: clave = id de la sala, valo
 SALIDAS = {
     "entrada":    {"e": "pasillo"},
     "pasillo":    {"o": "entrada", "e": "biblioteca", "s": "cripta"},
-    "biblioteca":      {"o": "pasillo", "s": "pozo"},
-    "guardia": {"n": "entrada", "e": "cripta", "s": "puente"},
+    "biblioteca": {"o": "pasillo", "s": "pozo"},
+    "guardia":    {"e": "cripta", "s": "puente"},
     "cripta":     {"n": "pasillo", "o": "guardia", "e": "pozo", "s": "tesoreria" },
     "pozo":       {"n": "biblioteca", "o": "cripta" , "s": "salida"},
     "puente":     {"n": "guardia", "e": "tesoreria"},
