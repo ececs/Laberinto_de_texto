@@ -18,7 +18,7 @@ Aquí solo devolvemos la información para que otros archivos la usen.
 HABITACIONES = {  # Diccionario con todas las salas: clave = id de la sala, valor = nombre y descripción.
     "entrada": {
         "nombre": "Entrada al Laberinto",
-        "descripcion": "Una antorcha parpadea. Al este (e), un pasillo largo y oscuro. Al sur (s), oyes pasos lejanos."
+        "descripcion": "Una antorcha parpadea. Al este (e), un pasillo largo y oscuro."
     },
     "pasillo": {
         "nombre": "Pasillo",
@@ -59,7 +59,7 @@ HABITACIONES = {  # Diccionario con todas las salas: clave = id de la sala, valo
 # -----------------------------
 # Para cada sala, indicamos a qué sala se llega con n/s/e/o.
 SALIDAS = {
-    "entrada":    {"e": "pasillo", "s": "guardia"},
+    "entrada":    {"e": "pasillo"},
     "pasillo":    {"o": "entrada", "e": "biblioteca", "s": "cripta"},
     "biblioteca":      {"o": "pasillo", "s": "pozo"},
     "guardia": {"n": "entrada", "e": "cripta", "s": "puente"},
