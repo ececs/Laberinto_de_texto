@@ -150,7 +150,7 @@ def salidas_disponibles(sala_id):
 
 # Mapa simple 3x3: cada celda tiene el id de la sala (string)
 MAPA = [
-    ["tesoreria", "salida", "puente"],
-    ["cripta",    "pozo",   "guardia"],
-    ["biblioteca","pasillo","entrada"],
+    ["entrada", "pasillo", "biblioteca"],
+    ["guardia",    "cripta",   "pozo"],
+    ["puente","tesoreria","salida"],
 ]
