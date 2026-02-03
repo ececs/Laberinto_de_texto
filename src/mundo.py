@@ -18,39 +18,39 @@ Aquí solo devolvemos la información para que otros archivos la usen.
 HABITACIONES = {  # Diccionario con todas las salas: clave = id de la sala, valor = nombre y descripción.
     "entrada": {
         "nombre": "Entrada al Laberinto",
-        "descripcion": "Una antorcha parpadea. Al norte, un pasillo largo y oscuro."
+        "descripcion": "Una antorcha parpadea. Al este (e), un pasillo largo y oscuro. Al sur (s), oyes pasos lejanos."
     },
     "pasillo": {
         "nombre": "Pasillo",
-        "descripcion": "Las paredes son antiguas de piedra desgastada, no puedes ver mucho, pero este (e) y oeste (o) parecen transitables."
+        "descripcion": "Las paredes son antiguas de piedra desgastada. Al oeste (o) está la entrada, al este (e) hay una biblioteca, y al sur (s) notas un aire frío."
     },
     "guardia": {
         "nombre": "Sala de Guardia",
-        "descripcion": "Restos de armaduras y escudos oxidados, si alguien salió de aquí, fue hace mucho. Puedes volver al oeste (o) o continuar por el norte (n)."
+        "descripcion": "Restos de armaduras y escudos oxidados. Al norte (n) puedes volver a la entrada. Al este (e) se abre una cripta, y al sur (s) hay un puente."
     },
     "biblioteca": {
         "nombre": "Biblioteca",
-        "descripcion": "Estantes polvorientos y libros desgastados. Hay sillas y mesas viejas, y además un olor a pergamino húmedo."
+        "descripcion": "Estantes polvorientos y libros desgastados. Al oeste (o) vuelves al pasillo. Al sur (s) se oye agua."
     },
     "cripta": {
         "nombre": "Cripta",
-        "descripcion": "Hay un silencio aterrador y frío intenso. Se oyen susurros, pero no sabes si son imaginarios."
+        "descripcion": "Silencio aterrador y frío intenso. Al norte (n) regresas al pasillo, al oeste (o) está la guardia, al este (e) se oye agua, y al sur (s) hay una tesorería."
     },
     "pozo": {
         "nombre": "Pozo",
-        "descripcion": "Se oye agua. Hacia el norte (n) parece haber claridad."
+        "descripcion": "Se oye agua. Al norte (n) está la biblioteca, al oeste (o) la cripta y al sur (s) parece haber una salida."
     },
     "puente": {
         "nombre": "Puente",
-        "descripcion": "Puente de piedra sobre un abismo, no parece verse el final de la caída."
+        "descripcion": "Puente de piedra sobre un abismo. Al norte (n) vuelves a la sala de guardia y al este (e) hay una tesorería."
     },
     "tesoreria": {
         "nombre": "Tesorería",
-        "descripcion": "Cofres de madera reforzada, monedas esparcidas y copas doradas cubiertas de telarañas. Quizá haya algo útil entre tanto polvo."
+        "descripcion": "Cofres reforzados, monedas y copas cubiertas de telarañas. Al norte (n) está la cripta, al oeste (o) el puente y al este (e) una gran puerta."
     },
     "salida": {
         "nombre": "Puerta de Salida",
-        "descripcion": "Una gran puerta se alza frente a ti. El aire es más fresco aquí, pero algo te dice que ya casi eres libre."
+        "descripcion": "Una gran puerta se alza frente a ti. Al norte (n) está el pozo y al oeste (o) la tesorería."
     },
 }
 
